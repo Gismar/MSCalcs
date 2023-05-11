@@ -1,6 +1,7 @@
 [
   {
     "Name" : "Cash Shop",
+    "Type" : "Dropdown",
     "Options" : [
       { "value": 1.0, "display": "None (1x)" },
       { "value": 2.0, "display": "2x" },
@@ -9,6 +10,7 @@
   },
   {
     "Name" : "Exp Buff Coupon",
+    "Type" : "Dropdown",
     "Options" : [
       { "value": 1.0, "display": "None (1x)" },
       { "value": 1.5, "display": "50% (1.5x)" },
@@ -18,6 +20,7 @@
   },
   {
     "Name" : "Server Event",
+    "Type" : "Dropdown",
     "Options" : [
       { "value": 1.0, "display": "None (1x)" },
       { "value": 1.5, "display": "50% (1.5x)" },
@@ -27,6 +30,7 @@
   },
   {
     "Name" : "Ring of Torment",
+    "Type" : "Dropdown",
     "Options" : [
       { "value": 1.0, "display": "None (0 Casts)" },
       { "value": 1.075, "display": "7.5% (2 Casts)" },
