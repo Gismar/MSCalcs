@@ -1,0 +1,37 @@
+[
+  {
+    "Name" : "Cash Shop",
+    "Options" : [
+      { "value": 1.0, "display": "None (1x)" },
+      { "value": 2.0, "display": "2x" },
+      { "value": 3.0, "display": "3x" }
+    ]
+  },
+  {
+    "Name" : "Exp Buff Coupon",
+    "Options" : [
+      { "value": 1.0, "display": "None (1x)" },
+      { "value": 1.5, "display": "50% (1.5x)" },
+      { "value": 2.0, "display": "100% (2x)" },
+      { "value": 3.0, "display": "200% (3x)" }
+    ]
+  },
+  {
+    "Name" : "Server Event",
+    "Options" : [
+      { "value": 1.0, "display": "None (1x)" },
+      { "value": 1.5, "display": "50% (1.5x)" },
+      { "value": 2.0, "display": "100% (2x)" },
+      { "value": 3.0, "display": "200% (3x)" }
+    ]
+  },
+  {
+    "Name" : "Ring of Torment",
+    "Options" : [
+      { "value": 1.0, "display": "None (0 Casts)" },
+      { "value": 1.075, "display": "7.5% (2 Casts)" },
+      { "value": 1.1125, "display": "11.25% (3 Casts)" },
+      { "value": 1.15, "display": "15% (4 Casts)" }
+    ]
+  }
+]
