@@ -3,39 +3,39 @@
     "Name" : "Cash Shop",
     "Type" : "Dropdown",
     "Options" : [
-      { "value": 1.0, "display": "None (1x)" },
-      { "value": 2.0, "display": "2x" },
-      { "value": 3.0, "display": "3x" }
+      { "className": "child", "value": 1.0, "label": "None (1x)" },
+      { "className": "child", "value": 2.0, "label": "2x" },
+      { "className": "child", "value": 3.0, "label": "3x" }
     ]
   },
   {
     "Name" : "Exp Buff Coupon",
     "Type" : "Dropdown",
     "Options" : [
-      { "value": 1.0, "display": "None (1x)" },
-      { "value": 1.5, "display": "50% (1.5x)" },
-      { "value": 2.0, "display": "100% (2x)" },
-      { "value": 3.0, "display": "200% (3x)" }
+      { "className": "child", "value": 1.0, "label": "None (1x)" },
+      { "className": "child", "value": 1.5, "label": "50% (1.5x)" },
+      { "className": "child", "value": 2.0, "label": "100% (2x)" },
+      { "className": "child", "value": 3.0, "label": "200% (3x)" }
     ]
   },
   {
     "Name" : "Server Event",
     "Type" : "Dropdown",
     "Options" : [
-      { "value": 1.0, "display": "None (1x)" },
-      { "value": 1.5, "display": "50% (1.5x)" },
-      { "value": 2.0, "display": "100% (2x)" },
-      { "value": 3.0, "display": "200% (3x)" }
+      { "className": "child", "value": 1.0, "label": "None (1x)" },
+      { "className": "child", "value": 1.5, "label": "50% (1.5x)" },
+      { "className": "child", "value": 2.0, "label": "100% (2x)" },
+      { "className": "child", "value": 3.0, "label": "200% (3x)" }
     ]
   },
   {
     "Name" : "Ring of Torment",
     "Type" : "Dropdown",
     "Options" : [
-      { "value": 1.0, "display": "None (0 Casts)" },
-      { "value": 1.075, "display": "7.5% (2 Casts)" },
-      { "value": 1.1125, "display": "11.25% (3 Casts)" },
-      { "value": 1.15, "display": "15% (4 Casts)" }
+      { "className": "child", "value": 1.0, "label": "None (0 Casts)" },
+      { "className": "child", "value": 1.075, "label": "7.5% (2 Casts)" },
+      { "className": "child", "value": 1.1125, "label": "11.25% (3 Casts)" },
+      { "className": "child", "value": 1.15, "label": "15% (4 Casts)" }
     ]
   }
 ]

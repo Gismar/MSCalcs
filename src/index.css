@@ -1,10 +1,18 @@
 :root {
+  --primarydark      : hsl(245, 20%, 15%);
+  --primary          : hsl(240, 20%, 25%);
+  --primarybright    : hsl(235, 20%, 35%);
+  --text-on-primary  : hsl(230, 95%, 95%);
+  --secondarydark    : hsl(175, 30%, 25%);
+  --secondary        : hsl(170, 50%, 30%);
+  --secondarybright  : hsl(165, 70%, 35%);
+  --text-on-secondary: hsl(160, 95%, 95%);
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
   font-synthesis: none;
@@ -12,6 +20,22 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+/*=======================================================================
+                          Section theming
+=======================================================================*/
+:root .primary{
+  --dark: var(--primarydark);
+  --normal: var(--primary);
+  --bright: var(--primarybright);
+  --text: var(--text-on-primary);
+}
+.secondary {
+  --dark: var(--secondarydark);
+  --normal: var(--secondary);
+  --bright: var(--secondarybright);
+  --text: var(--text-on-secondary);
 }
 
 a {
@@ -25,15 +49,124 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   min-width: 320px;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
+h2 {
+  color: var(--text);
+  text-shadow: var(--dark);
+  font-size: 2em;
+  padding: 0.5em 0em;
   line-height: 1.1;
 }
+
+h3 {
+  color: var(--text);
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0.25em 0em;
+}
+
+input {
+  color: var(--text); 
+  background-color: var(--dark);
+  border: var(--bright) solid 1px;
+  border-radius: 0px;
+}
+
+/*=======================================================================
+                          Section React select
+=======================================================================*/
+.select__control {
+  width: 100%;
+  transition: none !important; /* remove react's built in transition */
+  text-align: left;
+  border: 1px solid var(--bright);
+  border-radius: 10px;
+  background-color: var(--dark);
+  padding-left: 1em;
+  & .select__indicators {
+    padding-right: 0.5em;
+  }
+}
+.select__control--is-focused {
+  border-color: var(--text);
+}
+
+.select__control--menu-is-open {
+  border-bottom: 1px dotted var(--bright);
+  border-radius:  10px 10px 0px 0px;
+}
+
+.select__menu{
+  background-color: var(--dark);
+  border: 1px solid var(--text);
+  border-radius: 0px 0px 10px 10px;
+  border-top: 0;
+}
+
+.select__menu .select__option--is-selected {
+  background-color: var(--text);
+  color: var(--dark);
+}
+
+.checkbox {
+  background-color: var(--dark);
+  height: 1rem;
+  width: 16px;
+
+  & svg {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: var(--text);
+    stroke-dasharray: 7.2 200;
+    opacity: 0;
+    stroke-width: 1px;
+    height: 90%;
+    width: auto;
+    transition: 100ms;
+  }
+
+  &.checked {
+    background-color: var(--bright);
+    & svg {
+      opacity: 1;
+    }
+  }
+
+  &.checked:hover svg {
+    stroke-dashoffset: -11.25;
+    stroke-dasharray: 5.6 4.1 100;
+    transition: 100ms;
+  }
+
+  &:hover svg {
+    opacity: 0.5;
+  }
+}
+
+input[type=range] {
+  background-color: var(--dark);
+  -webkit-appearance: none;
+  appearance: none;
+  overflow: hidden;
+  border-radius: 200px;
+  height: 24px;
+
+   &::-webkit-slider-thumb {
+    background-color: var(--text);
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    border:none;
+    box-shadow: -212px 0 0 200px var(--bright);
+  }
+}
+
 
 button {
   border-radius: 8px;

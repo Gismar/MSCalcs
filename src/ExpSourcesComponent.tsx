@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./exp-sources-component.css";
-import { CreateDropDown, CreateRange, CreateToggle } from "./InputHelpers";
+import { CreateInputField, CreateDropDown, CreateRange, CreateToggle } from "./InputHelpers";
+import { Color, getColorClass } from "./App";
 
-interface Prop {
+interface props {
   data: ExpSource[];
   header: string;
   isAdditive: boolean;
   updateParent: (total: number) => void;
+  color: Color;
 }
 
 export interface ExpSource {
@@ -15,35 +17,38 @@ export interface ExpSource {
   Options: Option[];
 }
 
-export interface Option {
+export type Option = {
   value: number;
-  display: string;
+  label: string;
+  className: string;
 }
 
 export type DataState = [number, React.Dispatch<React.SetStateAction<number>>]
 
-function ExpSourceComponent({ data, header, isAdditive, updateParent }: Prop) {
+function ExpSourceComponent({ data, header, isAdditive, updateParent, color }: props) {
   const states = data.map(() => useState(isAdditive ? 0 : 1));
   const [total, handle] = totalHandler(states, isAdditive, updateParent);
 
   return (
     <>
-      <div className="multiplicative-grid-wrapper">
+      <div className={`exp-source-wrapper ${getColorClass(color)}`}>
         <h2>{header}</h2>
         {data.map((item, i) => {
           switch (item.Type) {
             case "Dropdown":
-              return CreateDropDown(item, i, states[i], handle);
+              return CreateDropDown(item, handle(i));
             case "Range":
-              return CreateRange(item, i, states[i], handle);
+              return CreateRange(item, states[i], handle(i));
             case "Toggle":
-              return CreateToggle(item, i, states[i], handle)
+              return CreateToggle(item, states[i], handle(i));
+            case "Input":
+              return CreateInputField(item, states[i], handle(i));
             default:
               return <h3>Failed</h3>
           }
         })}
       </div>
-      <div className="total">Total {isAdditive ? `${total}%` : `${total.toFixed(2)}x`}</div>
+      <h3 className={`total ${getColorClass(color)}`}>Total {isAdditive ? `${total}%` : `${total.toFixed(2)}x`}</h3>
     </>
   );
 }
@@ -51,11 +56,14 @@ function ExpSourceComponent({ data, header, isAdditive, updateParent }: Prop) {
 function totalHandler (states: DataState[], isAdditive: boolean, updateParent: (total: number) => void){
   const [total, setTotal] = useState<number>(isAdditive ? 0 : 1);
 
-  const handle = (indexToUpdate: number, newValue: number) => {
+  const handle = (indexToUpdate: number) => (newValue: number) => {
     let operation = isAdditive
       ? (a: number, b: number) => a + b
       : (a: number, b: number) => a * b;
     
+    if (Number.isNaN(newValue))
+      newValue = 0;
+
     setTotal(states.reduce(
       (acc: number, [stateValue, setStateValue], i) =>
         i === indexToUpdate
@@ -64,7 +72,7 @@ function totalHandler (states: DataState[], isAdditive: boolean, updateParent: (
       isAdditive ? 0 : 1
     ));
   }
-  updateParent(total);
+  useEffect(() => updateParent(total));
   return [total, handle] as const;
 }
 

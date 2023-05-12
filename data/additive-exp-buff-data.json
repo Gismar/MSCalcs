@@ -3,54 +3,75 @@
     "Name" : "Mercedes' Link Skill",
     "Type" : "Dropdown",
     "Options" : [
-      { "value": 0, "display": "Lv. 0" },
-      { "value": 10, "display": "Lv. 1 (10%)" },
-      { "value": 15, "display": "Lv. 2 (15%)" },
-      { "value": 20, "display": "Lv. 3 (20%)" }
+      { "className": "child", "value": 0, "label": "Lv. 0" },
+      { "className": "child", "value": 10, "label": "Lv. 1 (10%)" },
+      { "className": "child", "value": 15, "label": "Lv. 2 (15%)" },
+      { "className": "child", "value": 20, "label": "Lv. 3 (20%)" }
     ]
   },
   {
     "Name" : "Zero Legion Block",
     "Type" : "Dropdown",
     "Options" : [
-      { "value": 0, "display": "None" },
-      { "value": 4, "display": "Rank B (4%)" },
-      { "value": 6, "display": "Rank A (6%)" },
-      { "value": 8, "display": "Rank S (8%)" },
-      { "value": 10, "display": "Rank SS (10%)" },
-      { "value": 12, "display": "Rank SSS (12%)" }
+      { "className": "child", "value": 0, "label": "None" },
+      { "className": "child", "value": 4, "label": "Rank B (4%)" },
+      { "className": "child", "value": 6, "label": "Rank A (6%)" },
+      { "className": "child", "value": 8, "label": "Rank S (8%)" },
+      { "className": "child", "value": 10, "label": "Rank SS (10%)" },
+      { "className": "child", "value": 12, "label": "Rank SSS (12%)" }
     ]
   },
   {
     "Name" : "Bonus Exp Legion Grid",
     "Type" : "Range",
     "Options" : [
-      { "value": 0, "display": "min" },
-      { "value": 10, "display": "max" },
-      { "value": 0.25, "display": "step" }
+      { "className": "child", "value": 0, "label": "min" },
+      { "className": "child", "value": 10, "label": "max" },
+      { "className": "child", "value": 0.25, "label": "step" }
     ]
   },
   {
     "Name" : "Bonus Exp Hyper Stat",
     "Type" : "Range",
     "Options" : [
-      { "value": 0, "display": "min" },
-      { "value": 10, "display": "max" },
-      { "value": 0.5, "display": "step" }
+      { "className": "child", "value": 0, "label": "min" },
+      { "className": "child", "value": 10, "label": "max" },
+      { "className": "child", "value": 0.5, "label": "step" }
     ]
   },
   {
     "Name" : "EXP Accumulation Potion",
     "Type" : "Toggle",
     "Options" : [
-      { "value": 10, "display": "on" }
+      { "className": "child", "value": 10, "label": "on" }
     ]
   },
   {
     "Name" : "50% Bonus EXP Coupon",
     "Type" : "Toggle",
     "Options" : [
-      { "value": 50, "display": "on" }
+      { "className": "child", "value": 50, "label": "on" }
+    ]
+  },
+  {
+    "Name" : "Holy Symbol",
+    "Type" : "Input",
+    "Options" : [
+      { "className": "child", "value": 32, "label": "Lv. 25 Decent Holy Symbol" },
+      { "className": "child", "value": 35, "label": "Lv. 30 Decent Holy Symbol" },
+      { "className": "child", "value": 70, "label": "Lv. 25 Holy Symbol (Self)" },
+      { "className": "child", "value": 50, "label": "Lv. 25 Holy Symbol (Party)" },
+      { "className": "child", "value": 25, "label": "Lv. 25 Holy Symbol (Far Away)" }
+    ]
+  },
+  {
+    "Name" : "Pendant of Spirit",
+    "Type" : "Dropdown",
+    "Options" : [
+      { "className": "child", "value": 0, "label": "None" },
+      { "className": "child", "value": 10, "label": "1st Hour (10%)" },
+      { "className": "child", "value": 20, "label": "2nd Hour (20%)" },
+      { "className": "child", "value": 30, "label": "Completed (30%)" }
     ]
   }
 ]

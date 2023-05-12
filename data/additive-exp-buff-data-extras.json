@@ -1,0 +1,32 @@
+[
+  {
+    "Name" : "Event Title",
+    "Type" : "Input",
+    "Options" : [
+      { "className": "child", "value": 10, "label": "Titles" }
+    ]
+  },
+  {
+    "Name" : "Monster Life Farm",
+    "Type" : "Dropdown",
+    "Options" : [
+      { "className": "child", "value": 0, "label": "None" },
+      { "className": "child", "value": 3, "label": "3%" },
+      { "className": "child", "value": 6, "label": "6%" }
+    ]
+  },
+  {
+    "Name" : "Skills",
+    "Type" : "Input",
+    "Options" : [
+      { "className": "child", "value": null, "label": "For skills that give bonus exp" }
+    ]
+  },
+  {
+    "Name" : "Misc.",
+    "Type" : "Input",
+    "Options" : [
+      { "className": "child", "value": null, "label": "For anything else" }
+    ]
+  }
+]

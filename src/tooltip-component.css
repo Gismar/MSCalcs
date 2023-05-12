@@ -1,0 +1,33 @@
+.tooltip-wrapper {
+  position: relative;
+  background-color: var(--bright);
+  border-radius: 5px;
+}
+
+.hover {
+  padding: 0 1em;
+  font-weight: 500;
+}
+
+.tooltip {
+  overflow-wrap: unset;
+  position: absolute;
+  display: inline-block;
+  width: auto;
+  font-size: 1em;
+  /* top: top; Handled by TooptipComponent */
+  /* left: left; Handled by TooptipComponent */
+  /* opacity: show ? 1 : 0; Handled by TooptipComponent */
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  white-space: pre;
+  padding: 1em;
+  z-index: 10
+}
+
+input {
+  font-size: 1em;
+  font-weight: 500;
+}
