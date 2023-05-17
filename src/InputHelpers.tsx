@@ -1,4 +1,3 @@
-import { Color, getColorClass } from "./App";
 import Select from 'react-select';
 import { DataState, ExpSource, Option } from "./ExpSourcesComponent";
 import TooltipComponent from "./TooltipComponent";
@@ -85,10 +84,12 @@ export function CreateInputField(
           )}
         />
         <input
+          className="input-range"
           type="number"
           min={0}
-          value={state[0]}
-          onChange={(event) => handler(event.target.valueAsNumber)}
+          maxLength={10}
+          value={Math.min(state[0], 99999)}
+          onChange={(event) => handler(Math.min(event.target.valueAsNumber, 99999))}
         />
       </div>
     </div>

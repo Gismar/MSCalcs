@@ -38,15 +38,6 @@
   --text: var(--text-on-secondary);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   min-width: 320px;
@@ -67,23 +58,43 @@ h3 {
   margin: 0;
   padding: 0.25em 0em;
 }
-
-input {
+/*=======================================================================
+                          Section React select
+=======================================================================*/
+.input-range {
   color: var(--text); 
   background-color: var(--dark);
   border: var(--bright) solid 1px;
-  border-radius: 0px;
+  padding-left: 1em;
+  border-radius: 5px;
+  
+  &:focus {
+    outline: none;
+    border-color: var(--text);
+  }
 }
-
+.input-wrapper::after{
+  content: '%';
+  position: absolute;
+  right: 2em;
+}
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    margin: 0;
+  }
 /*=======================================================================
                           Section React select
 =======================================================================*/
 .select__control {
   width: 100%;
+  height: 32px;
+  min-height: 16px !important; /* remove react's built in min-height */
   transition: none !important; /* remove react's built in transition */
   text-align: left;
   border: 1px solid var(--bright);
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: var(--dark);
   padding-left: 1em;
   & .select__indicators {
@@ -102,8 +113,10 @@ input {
 .select__menu{
   background-color: var(--dark);
   border: 1px solid var(--text);
+  overflow: hidden;
   border-radius: 0px 0px 10px 10px;
   border-top: 0;
+  background-clip: border-box;
 }
 
 .select__menu .select__option--is-selected {
@@ -111,8 +124,20 @@ input {
   color: var(--dark);
 }
 
+.select__menu .select__option:hover{
+  background-color: var(--text);
+  color: var(--dark);
+}
+
+
+
+/*=======================================================================
+                          Section Checkbox
+=======================================================================*/
 .checkbox {
   background-color: var(--dark);
+  border: 1px solid var(--bright);
+  border-radius: 5px;
   height: 1rem;
   width: 16px;
 
@@ -120,8 +145,8 @@ input {
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke: var(--text);
     stroke-dasharray: 7.2 200;
+    stroke: var(--text);
     opacity: 0;
     stroke-width: 1px;
     height: 90%;
@@ -139,63 +164,33 @@ input {
   &.checked:hover svg {
     stroke-dashoffset: -11.25;
     stroke-dasharray: 5.6 4.1 100;
-    transition: 100ms;
   }
 
   &:hover svg {
     opacity: 0.5;
+    stroke-dashoffset: 0;
   }
 }
 
+/*=======================================================================
+                          Section Slider
+=======================================================================*/
 input[type=range] {
   background-color: var(--dark);
   -webkit-appearance: none;
   appearance: none;
   overflow: hidden;
-  border-radius: 200px;
+  border-radius: 24px;
   height: 24px;
-
+  
    &::-webkit-slider-thumb {
     background-color: var(--text);
     -webkit-appearance: none;
     appearance: none;
     width: 24px;
     height: 24px;
-    border-radius: 100%;
+    border-radius: 24px;
     border:none;
     box-shadow: -212px 0 0 200px var(--bright);
-  }
-}
-
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 }

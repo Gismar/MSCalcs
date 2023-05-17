@@ -17,7 +17,7 @@ export interface ExpSource {
   Options: Option[];
 }
 
-export type Option = {
+export interface Option {
   value: number;
   label: string;
   className: string;

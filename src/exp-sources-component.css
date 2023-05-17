@@ -8,17 +8,23 @@
 
 .exp-source-wrapper {
   background-color: var(--normal);
-  color:var(--text);
+  color: var(--text);
   width: 100%;
+  padding-bottom: 1em;
 }
 
 .exp-source-wrapper .row {
   display: flex;
+  position: relative;
+  align-items: end;
+  min-height: 32px;
   flex-direction: row;
-  padding: 0.1em 1em;
+  padding: 1px 1em;
 
   &>:nth-child(1) {
-    font-size: 1.25em;
+    margin-right: 1em;
+    border-bottom: 0.25px dashed var(--bright);
+    border-right: 0.25px dashed var(--bright);
     flex: 2;
     display: flex;
     flex-direction: column;
@@ -26,24 +32,36 @@
   }
 
   &>:nth-child(2) {
-    font-size: 1.1em;
     flex: 1.5;
     display: flex;
     align-items: center;
     flex-direction: row;
+    & label {
+      border-bottom: 0.25px dashed var(--bright);
+      border-left: 0.25px dashed var(--bright);
+    }
   }
 
-  & .range-wrapper,
-  & .input-wrapper{
-    font-size: 1.1em;
+  & .range-wrapper {
     gap: 0.5em;
+    align-items: end;
 
     &>:nth-child(1) {
       flex: 1;
     }
     &>:nth-child(2) {
       flex: 2;
-      height: 24px;
+      width: 100%;
+    }
+  }
+
+  
+  & .input-wrapper {
+    gap: 0.5em;
+    line-height: 32px;
+    &>:nth-child(2) {
+      flex: 1;
+      height: 28px;
     }
   }
 
@@ -72,5 +90,24 @@
 @media (width <=500px) {
   .exp-source-wrapper .row {
     flex-direction: column;
+
+    &>:nth-child(1) {
+      margin-top: 1em;
+      margin-right: 0;
+      border-right: none;
+      border-bottom: none;
+      border-top: 0.25px dashed var(--bright);
+      flex: 1;
+      width: 100%;
+    }
+
+    &>:nth-child(2) {
+      flex: 1;
+      width: 100%;
+      flex-direction: row;
+      & label {
+        border: none;
+      }
+    }
   }
 }
