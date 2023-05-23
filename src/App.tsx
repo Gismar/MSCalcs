@@ -1,61 +1,93 @@
-import { useState } from "react";
+import { useState, useEffect, memo } from "react";
 import ExpSourceComponent, { ExpSource } from "./ExpSourcesComponent";
-import multiplicativeData from "../data/multiplicative-exp-buff-data.json";
-import additiveData from "../data/additive-exp-buff-data.json";
-import extrasData from "../data/additive-exp-buff-data-extras.json"
-
-export enum Color {
-  primary,
-  secondary,
-  tertiary,
-  quadriary
-}
-
+import PocketBase from "pocketbase";
+import * as DataBases from "../databaseUpdater";
+import { getExpSourceData, formatDecimal, Color } from "./Utilities";
+import RuneSourceComponent from "./RuneSourceComponent";
+import BurningSourceComponent from "./BurningSourceComponent";
 
 function App() {
-  let [multiplicative, setMultiplicative] = useState(1);
-  let [additive, setAdditive] = useState(0);
-  let [extras, setExtras] = useState(0);
+  const [multiplicative, setMultiplicative] = useState(1);
+  const [additive, setAdditive] = useState(0);
+  const [extras, setExtras] = useState(0);
+  const [rune, setRune] = useState(40);
+  const [mues, setMues] = useState<ExpSource[]>([]);
+  const [ades, setAdes] = useState<ExpSource[]>([]);
+  const [boes, setBoes] = useState<ExpSource[]>([]);
+  const [ready, setReady] = useState(false);
+
+  const pb = new PocketBase("https://mscalc.fly.dev");
+  useEffect(() => {
+    fetch();
+  }, []);
+
+  async function fetch() {
+    try {
+      const muesResult = await getExpSourceData(
+        pb.collection(DataBases.MUES_NAME)
+      );
+      setMues(muesResult);
+
+      const adesResult = await getExpSourceData(
+        pb.collection(DataBases.ADES_NAME)
+      );
+      setAdes(adesResult);
+
+      const boesResult = await getExpSourceData(
+        pb.collection(DataBases.BOES_NAME)
+      );
+      setBoes(boesResult);
+
+      setReady(true);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  if (!ready) return <h2>Loading...</h2>;
+
   return (
     <>
-      <ExpSourceComponent
-        data={multiplicativeData as ExpSource[]}
-        header="Multiplicative Stacking Exp Bonuses"
-        isAdditive={false}
-        updateParent={setMultiplicative}
-        color={Color.primary}
-      />
-      <ExpSourceComponent
-        data={additiveData as ExpSource[]}
-        header="Additive Stacking Exp Bonuses"
-        isAdditive={true}
-        updateParent={setAdditive}
-        color={Color.secondary}
-      />
-      <ExpSourceComponent
-        data={extrasData as ExpSource[]}
-        header="Extras Additive Stacking Exp Bonuses"
-        isAdditive={true}
-        updateParent={setExtras}
-        color={Color.primary}
-      />
-      <h1>Total: {format(multiplicative * 100 + additive + extras)}%</h1>
+      <div className="sources">
+        <ExpSourceComponent
+          data={mues}
+          header="Multiplicative Stacking Exp Bonuses"
+          isAdditive={false}
+          updateParent={setMultiplicative}
+          color={Color.primary}
+        />
+        <ExpSourceComponent
+          data={ades}
+          header="Additive Stacking Exp Bonuses"
+          isAdditive={true}
+          updateParent={setAdditive}
+          color={Color.secondary}
+        />
+        <RuneSourceComponent
+          header="Rune Exp Bonus"
+          updateParent={setRune}
+          color={Color.tertiary}
+        />
+        <ExpSourceComponent
+          data={boes}
+          header="Extras Additive Stacking Exp Bonuses"
+          isAdditive={true}
+          updateParent={setExtras}
+          color={Color.quaternary}
+        />
+        <BurningSourceComponent
+          header="Burning Stages"
+          updateParent={() => {}}
+          color={Color.primary}
+        />
+      </div>
+      <div className="monsterInfo">
+        <h1>
+          Total: {formatDecimal(multiplicative * 100 + additive + extras + rune)}%
+        </h1>
+      </div>
     </>
   );
 }
 
-function format (num: number):string {
-  if (num % 1 !== 0)
-    return num.toFixed(2)
-  return num.toFixed(0);
-}
-
-export function getColorClass (color: Color) {
-  switch (color){
-    case Color.primary: return "primary";
-    case Color.secondary: return "secondary";
-    case Color.tertiary: return "tertiary";
-    case Color.quadriary: return "quadriary";
-  }
-}
-export default App;
+export default memo(App);

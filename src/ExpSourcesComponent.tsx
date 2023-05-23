@@ -1,7 +1,13 @@
-import { useEffect, useState } from "react";
+import {
+  CreateInputField,
+  CreateDropDown,
+  CreateRange,
+  CreateToggle,
+} from "./inputCreators";
+import { useState, memo } from "react";
+import { getColorClass, Color } from "./Utilities";
 import "./exp-sources-component.css";
-import { CreateInputField, CreateDropDown, CreateRange, CreateToggle } from "./InputHelpers";
-import { Color, getColorClass } from "./App";
+import { totalHandler } from "./totalHandler";
 
 interface props {
   data: ExpSource[];
@@ -12,9 +18,9 @@ interface props {
 }
 
 export interface ExpSource {
-  Name: string;
-  Type: string;
-  Options: Option[];
+  name: string;
+  type: string;
+  options: Option[];
 }
 
 export interface Option {
@@ -23,9 +29,14 @@ export interface Option {
   className: string;
 }
 
-export type DataState = [number, React.Dispatch<React.SetStateAction<number>>]
 
-function ExpSourceComponent({ data, header, isAdditive, updateParent, color }: props) {
+function ExpSourceComponent({
+  data,
+  header,
+  isAdditive,
+  updateParent,
+  color,
+}: props) {
   const states = data.map(() => useState(isAdditive ? 0 : 1));
   const [total, handle] = totalHandler(states, isAdditive, updateParent);
 
@@ -34,46 +45,25 @@ function ExpSourceComponent({ data, header, isAdditive, updateParent, color }: p
       <div className={`exp-source-wrapper ${getColorClass(color)}`}>
         <h2>{header}</h2>
         {data.map((item, i) => {
-          switch (item.Type) {
-            case "Dropdown":
-              return CreateDropDown(item, handle(i));
-            case "Range":
-              return CreateRange(item, states[i], handle(i));
-            case "Toggle":
-              return CreateToggle(item, states[i], handle(i));
-            case "Input":
-              return CreateInputField(item, states[i], handle(i));
+          switch (item.type) {
+            case "dropdown":
+              return CreateDropDown(item.name, item.options, handle(i));
+            case "range":
+              return CreateRange(item.name, item.options, states[i], handle(i));
+            case "toggle":
+              return CreateToggle(item.name, item.options, states[i], handle(i));
+            case "input":
+              return CreateInputField(item.name, item.options, states[i], handle(i));
             default:
-              return <h3>Failed</h3>
+              return <h3>Failed</h3>;
           }
         })}
       </div>
-      <h3 className={`total ${getColorClass(color)}`}>Total {isAdditive ? `${total}%` : `${total.toFixed(2)}x`}</h3>
+      <h3 className={`total ${getColorClass(color)}`}>
+        Total {isAdditive ? `${total}%` : `${total.toFixed(2)}x`}
+      </h3>
     </>
   );
 }
 
-function totalHandler (states: DataState[], isAdditive: boolean, updateParent: (total: number) => void){
-  const [total, setTotal] = useState<number>(isAdditive ? 0 : 1);
-
-  const handle = (indexToUpdate: number) => (newValue: number) => {
-    let operation = isAdditive
-      ? (a: number, b: number) => a + b
-      : (a: number, b: number) => a * b;
-    
-    if (Number.isNaN(newValue))
-      newValue = 0;
-
-    setTotal(states.reduce(
-      (acc: number, [stateValue, setStateValue], i) =>
-        i === indexToUpdate
-          ? (setStateValue(newValue), operation(acc, newValue))
-          : operation(acc, stateValue),
-      isAdditive ? 0 : 1
-    ));
-  }
-  useEffect(() => updateParent(total));
-  return [total, handle] as const;
-}
-
-export default ExpSourceComponent;
+export default memo(ExpSourceComponent);

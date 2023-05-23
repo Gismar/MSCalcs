@@ -1,18 +1,29 @@
 :root {
-  --primarydark      : hsl(245, 20%, 15%);
-  --primary          : hsl(240, 20%, 25%);
-  --primarybright    : hsl(235, 20%, 35%);
-  --text-on-primary  : hsl(230, 95%, 95%);
-  --secondarydark    : hsl(175, 30%, 25%);
-  --secondary        : hsl(170, 50%, 30%);
-  --secondarybright  : hsl(165, 70%, 35%);
-  --text-on-secondary: hsl(160, 95%, 95%);
+  --primarydark       : hsl(240, 30%, 25%);
+  --primary           : hsl(235, 35%, 30%);
+  --primarybright     : hsl(230, 35%, 40%);
+  --text-on-primary   : hsl(225, 95%, 95%);
+
+  --secondarydark     : hsl(175, 30%, 25%);
+  --secondary         : hsl(170, 50%, 30%);
+  --secondarybright   : hsl(165, 70%, 35%);
+  --text-on-secondary : hsl(160, 95%, 95%);
+
+  --tertiarydark      : hsl(345, 30%, 30%);
+  --tertiary          : hsl(350, 35%, 45%);
+  --tertiarybright    : hsl(355, 40%, 60%);
+  --text-on-tertiary  : hsl(360, 95%, 95%);
+  
+  --qauternarydark    : hsl(20, 30%, 25%);
+  --qauternary        : hsl(25, 40%, 40%);
+  --qauternarybright  : hsl(30, 50%, 55%);
+  --text-on-qauternary: hsl(35, 96%, 96%);
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  color-scheme: dark;
   background-color: #242424;
 
   font-synthesis: none;
@@ -31,24 +42,54 @@
   --bright: var(--primarybright);
   --text: var(--text-on-primary);
 }
-.secondary {
+:root .secondary {
   --dark: var(--secondarydark);
   --normal: var(--secondary);
   --bright: var(--secondarybright);
   --text: var(--text-on-secondary);
 }
+:root .tertiary {
+  --dark: var(--tertiarydark);
+  --normal: var(--tertiary);
+  --bright: var(--tertiarybright);
+  --text: var(--text-on-tertiary);
+}
+:root .quaternary {
+  --dark: var(--qauternarydark);
+  --normal: var(--qauternary);
+  --bright: var(--qauternarybright);
+  --text: var(--text-on-qauternary);
+}
+
+#root {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  flex: 1;
+  width: 90%;
+  padding: 1em;
+  text-align: center;
+}
+.sources {
+  max-width: 500px;
+  flex: 1;
+}
+.monsterInfo {
+  position: sticky;
+  flex: 1;
+  top: 0;
+  height: 100%;
+}
 
 body {
   margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h2 {
   color: var(--text);
   text-shadow: var(--dark);
   font-size: 2em;
-  padding: 0.5em 0em;
+  padding: 0.5em 0.5em;
   line-height: 1.1;
 }
 
@@ -106,7 +147,7 @@ input::-webkit-outer-spin-button {
 }
 
 .select__control--menu-is-open {
-  border-bottom: 1px dotted var(--bright);
+  border-bottom: none;
   border-radius:  10px 10px 0px 0px;
 }
 
@@ -192,5 +233,11 @@ input[type=range] {
     border-radius: 24px;
     border:none;
     box-shadow: -212px 0 0 200px var(--bright);
+  }
+}
+@media (width < 700px) {
+  #root {
+    flex-direction: column;
+    align-items: center;
   }
 }

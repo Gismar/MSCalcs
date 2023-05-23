@@ -1,17 +1,19 @@
 [
   {
-    "Name" : "Cash Shop",
-    "Type" : "Dropdown",
-    "Options" : [
+    "id": "csc",
+    "name" : "Cash Shop",
+    "type" : "dropdown",
+    "options" : [
       { "className": "child", "value": 1.0, "label": "None (1x)" },
       { "className": "child", "value": 2.0, "label": "2x" },
       { "className": "child", "value": 3.0, "label": "3x" }
     ]
   },
   {
-    "Name" : "Exp Buff Coupon",
-    "Type" : "Dropdown",
-    "Options" : [
+    "id": "efc",
+    "name" : "Exp Buff Coupon",
+    "type" : "dropdown",
+    "options" : [
       { "className": "child", "value": 1.0, "label": "None (1x)" },
       { "className": "child", "value": 1.5, "label": "50% (1.5x)" },
       { "className": "child", "value": 2.0, "label": "100% (2x)" },
@@ -19,9 +21,10 @@
     ]
   },
   {
-    "Name" : "Server Event",
-    "Type" : "Dropdown",
-    "Options" : [
+    "id": "see",
+    "name" : "Server Event",
+    "type" : "dropdown",
+    "options" : [
       { "className": "child", "value": 1.0, "label": "None (1x)" },
       { "className": "child", "value": 1.5, "label": "50% (1.5x)" },
       { "className": "child", "value": 2.0, "label": "100% (2x)" },
@@ -29,9 +32,10 @@
     ]
   },
   {
-    "Name" : "Ring of Torment",
-    "Type" : "Dropdown",
-    "Options" : [
+    "id": "rot",
+    "name" : "Ring of Torment",
+    "type" : "dropdown",
+    "options" : [
       { "className": "child", "value": 1.0, "label": "None (0 Casts)" },
       { "className": "child", "value": 1.075, "label": "7.5% (2 Casts)" },
       { "className": "child", "value": 1.1125, "label": "11.25% (3 Casts)" },

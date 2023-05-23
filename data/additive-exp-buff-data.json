@@ -1,8 +1,9 @@
 [
   {
-    "Name" : "Mercedes' Link Skill",
-    "Type" : "Dropdown",
-    "Options" : [
+    "id": "mls",
+    "name" : "Mercedes' Link Skill",
+    "type" : "dropdown",
+    "options" : [
       { "className": "child", "value": 0, "label": "Lv. 0" },
       { "className": "child", "value": 10, "label": "Lv. 1 (10%)" },
       { "className": "child", "value": 15, "label": "Lv. 2 (15%)" },
@@ -10,9 +11,10 @@
     ]
   },
   {
-    "Name" : "Zero Legion Block",
-    "Type" : "Dropdown",
-    "Options" : [
+    "id": "zlb",
+    "name" : "Zero Legion Block",
+    "type" : "dropdown",
+    "options" : [
       { "className": "child", "value": 0, "label": "None" },
       { "className": "child", "value": 4, "label": "Rank B (4%)" },
       { "className": "child", "value": 6, "label": "Rank A (6%)" },
@@ -22,41 +24,46 @@
     ]
   },
   {
-    "Name" : "Bonus Exp Legion Grid",
-    "Type" : "Range",
-    "Options" : [
+    "id": "elg",
+    "name" : "Bonus Exp Legion Grid",
+    "type" : "range",
+    "options" : [
       { "className": "child", "value": 0, "label": "min" },
       { "className": "child", "value": 10, "label": "max" },
       { "className": "child", "value": 0.25, "label": "step" }
     ]
   },
   {
-    "Name" : "Bonus Exp Hyper Stat",
-    "Type" : "Range",
-    "Options" : [
+    "id": "ehs",
+    "name" : "Bonus Exp Hyper Stat",
+    "type" : "range",
+    "options" : [
       { "className": "child", "value": 0, "label": "min" },
       { "className": "child", "value": 10, "label": "max" },
       { "className": "child", "value": 0.5, "label": "step" }
     ]
   },
   {
-    "Name" : "EXP Accumulation Potion",
-    "Type" : "Toggle",
-    "Options" : [
+    "id": "ecp",
+    "name" : "EXP Accumulation Potion",
+    "type" : "toggle",
+    "options" : [
       { "className": "child", "value": 10, "label": "on" }
     ]
   },
   {
-    "Name" : "50% Bonus EXP Coupon",
-    "Type" : "Toggle",
-    "Options" : [
+    "id": "50b",
+    "name" : "50% Bonus EXP Coupon",
+    "type" : "toggle",
+    "options" : [
       { "className": "child", "value": 50, "label": "on" }
     ]
   },
   {
-    "Name" : "Holy Symbol",
-    "Type" : "Input",
-    "Options" : [
+    "id": "dhs",
+    "name" : "Holy Symbol",
+    "type" : "input",
+    "options" : [
       { "className": "child", "value": 32, "label": "Lv. 25 Decent Holy Symbol" },
       { "className": "child", "value": 35, "label": "Lv. 30 Decent Holy Symbol" },
       { "className": "child", "value": 70, "label": "Lv. 25 Holy Symbol (Self)" },
@@ -65,9 +72,10 @@
     ]
   },
   {
-    "Name" : "Pendant of Spirit",
-    "Type" : "Dropdown",
-    "Options" : [
+    "id": "pos",
+    "name" : "Pendant of Spirit",
+    "type" : "dropdown",
+    "options" : [
       { "className": "child", "value": 0, "label": "None" },
       { "className": "child", "value": 10, "label": "1st Hour (10%)" },
       { "className": "child", "value": 20, "label": "2nd Hour (20%)" },
